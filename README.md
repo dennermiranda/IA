@@ -6,6 +6,7 @@ Inteligência Artificial 2015.2
 Members:
 
 Dener Miranda
+
 Pedro C Frazão
 
 Objective:
