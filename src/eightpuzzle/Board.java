@@ -12,4 +12,6 @@ import java.util.PriorityQueue;
 public class Board {
     private PriorityQueue<EightPuzzle> hammingList;
     private PriorityQueue<EightPuzzle> manhattanList;
+    
+    
 }
