@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 package eightpuzzle;
-import java.util.PriorityQueue;
+
 /**
  *
  * @author Dener
  * @author Pedro Frazao
  */
-public class Board {
-    private PriorityQueue<EightPuzzle> hammingList;
-    private PriorityQueue<EightPuzzle> manhattanList;
-    
+public class AAsterisk {
     
 }

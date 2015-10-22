@@ -13,6 +13,7 @@ import java.util.List;
 /**
  *
  * @author Dener
+ * @author Pedro Frazao
  */
 public class EightPuzzle implements Comparable<EightPuzzle>{
 
