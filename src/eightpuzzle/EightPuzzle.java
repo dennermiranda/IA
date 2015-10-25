@@ -27,6 +27,15 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     private Deque<String> path = new ArrayDeque<String>();
     private EightPuzzle parent = new EightPuzzle();
     private int hamming;
+    
+    public boolean isSolution(){
+        boolean sol = true;
+        for (int i = 0; i <9; i ++){
+            if ((int)current.get(i)!= solution [i])
+                sol = false;
+        }
+        return sol;
+    }
     public EightPuzzle getParent() {
         return parent;
     }
@@ -108,6 +117,12 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         
         return Integer.compare(hamming, o.getHamming());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public ArrayList<EightPuzzle> genSucessors (){
+        ArrayList<EightPuzzle> suc = new ArrayList<>();
+        
+        return suc;
     }
     
 }
