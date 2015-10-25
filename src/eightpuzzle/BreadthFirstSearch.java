@@ -6,6 +6,7 @@
 package eightpuzzle;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 //import sun.invoke.empty.Empty;
@@ -26,7 +27,7 @@ public class BreadthFirstSearch {
     
     //EightPuzzle eightpuzzle = new EightPuzzle();
     //ArrayList<EightPuzzle> suc = new ArrayList<>();
-    
+    HashMap<Integer, EightPuzzle> visited= new HashMap<Integer, EightPuzzle>();
     
     public void addToQueue (ArrayList suc, Queue q1){
         
@@ -44,10 +45,12 @@ public class BreadthFirstSearch {
         
         //Queue q1 = new Queue();
         Queue<EightPuzzle> q1 = new LinkedList<EightPuzzle>();
+        EightPuzzle var = q1.element();
+        visited.put(var.hashCode(), var);
         
         while (!q1.isEmpty()){
             
-            EightPuzzle var = q1.poll();
+            var = q1.poll();
             
             if (!var.isSolution()){
                 
