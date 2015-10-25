@@ -8,7 +8,8 @@ package eightpuzzle;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-import sun.invoke.empty.Empty;
+//import sun.invoke.empty.Empty;
+//import java.util.ha
 
 /**
  *
@@ -31,6 +32,7 @@ public class BreadthFirstSearch {
         
         int i;
         for (i=0;i<=suc.size();i++){
+            //checar se é igual ao inicial
             q1.add(suc.get(i));
             
         }
