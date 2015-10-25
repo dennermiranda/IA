@@ -9,6 +9,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -174,5 +175,29 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         suc.add(puzzle);
         
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.current);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final EightPuzzle other = (EightPuzzle) obj;
+        if (!Objects.equals(this.current, other.current)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }
