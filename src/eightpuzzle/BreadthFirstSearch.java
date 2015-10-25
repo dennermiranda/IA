@@ -33,8 +33,13 @@ public class BreadthFirstSearch {
         
         int i;
         for (i=0;i<=suc.size();i++){
-            //checar se é igual ao inicial
-            q1.add(suc.get(i));
+            
+            if (!visited.containsValue(suc.get(i))){
+                
+                visited.put(suc.get(i).hashCode(), (EightPuzzle)suc.get(i));
+                q1.add(suc.get(i));
+                
+            }
             
         }
     }
