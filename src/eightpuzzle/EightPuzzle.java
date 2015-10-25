@@ -121,8 +121,34 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     
     public ArrayList<EightPuzzle> genSucessors (){
         ArrayList<EightPuzzle> suc = new ArrayList<>();
+        int hole = hole();
         
+        //left
+        if(hole != 0 && hole != 3 && hole !=6)
+            swap(hole-1, suc);
+        
+        //top
+        if (hole != 6 && hole != 7 && hole != 8)
+            swap(hole+3, suc);
+        
+        //bottom
+        if (hole != 0 && hole != 1 && hole != 2)
+            swap(hole-3, suc);
+        
+        //right
+        if (hole != 2 && hole != 5 && hole != 8)
+            swap(hole+1, suc);
+            
         return suc;
+    }
+    
+    public void swap(int hole1, ArrayList<EightPuzzle> suc){
+        
+        EightPuzzle puzzle = new EightPuzzle(this.current);
+        puzzle.setCurrent(this.current);
+        puzzle.swap(hole1);
+        suc.add(puzzle);
+        
     }
     
 }
