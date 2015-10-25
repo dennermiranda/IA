@@ -27,6 +27,11 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     private Deque<String> path = new ArrayDeque<String>();
     private EightPuzzle parent = new EightPuzzle();
     private int hamming;
+    private int manhattan = 0;
+
+    public int getManhattan() {
+        return manhattan;
+    }
     
     public boolean isSolution(){
         boolean sol = true;
@@ -58,8 +63,27 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     }
     
     public int manhattan(){
-        int x = 0;
-        return x;
+        //int z = 0;
+        
+        int index = -1;
+        
+        for (int y = 0; y < 3; y++){
+            for(int x = 0; x < 3; x++){
+                index++;
+                
+                int val = ((int)current.get(index)-1);
+                
+                if(val!=-1){
+                    int horiz = val %3;
+                    int vert = val / 3;
+                    this.manhattan += Math.abs(vert - (y)) + Math.abs(horiz - (x));                   
+                    
+                }
+            }
+        }
+        
+        
+        return manhattan;
     }
     
     public int hamming (){

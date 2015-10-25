@@ -12,5 +12,10 @@ package eightpuzzle;
 public class Run {
     public static void main (String args []){
         new GUIPuzzleF().setVisible(true);
+        EightPuzzle puzzle = new EightPuzzle();
+        
+        if(!puzzle.isSolution()){
+            
+        }
     }
 }
