@@ -40,8 +40,10 @@ public class AStar {
         System.out.println("Inicia Star");
         //Queue q1 = new Queue();
         PriorityQueue<EightPuzzle> q1 = new PriorityQueue<>();
-        
-        eightpuzzle.manhattan();
+        if (heur == 0)
+            eightpuzzle.hamming();
+        else
+            eightpuzzle.manhattan();
         q1.offer(eightpuzzle);
         EightPuzzle var = q1.element();
         visited.add(var);
