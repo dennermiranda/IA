@@ -231,10 +231,5 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         }
         return suc;
         
-    }
-    
-    
-    
-    
-    
+    }    
 }
