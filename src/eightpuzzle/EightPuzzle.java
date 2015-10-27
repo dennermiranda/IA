@@ -27,11 +27,11 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     
     private Deque<String> path = new ArrayDeque<String>();
     private EightPuzzle parent = new EightPuzzle();
-    private int hamming;
-    private int manhattan = 0;
+    //private int hamming;
+    private int h = 0;
 
-    public int getManhattan() {
-        return manhattan;
+    public int getH() {
+        return h;
     }
     
     public boolean isSolution(){
@@ -50,9 +50,6 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         this.parent = parent;
     }
 
-    public int getHamming() {
-        return hamming;
-    }
     
     
     public int hole (){
@@ -77,14 +74,14 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
                 if(val!=-1){
                     int horiz = val %3;
                     int vert = val / 3;
-                    this.manhattan += Math.abs(vert - (y)) + Math.abs(horiz - (x));                   
+                    this.h += Math.abs(vert - (y)) + Math.abs(horiz - (x));                   
                     
                 }
             }
         }
         
         
-        return manhattan;
+        return h;
     }
     
     public int hamming (){
@@ -93,7 +90,7 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
             if ((int )current.get(i)!= solution[i])
                 x++;
         }
-        this.hamming = x;
+        this.h = x;
         return x;
     }
     
@@ -140,7 +137,7 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     @Override
     public int compareTo(EightPuzzle o) {
         
-        return Integer.compare(hamming, o.getHamming());
+        return Integer.compare(h, o.getH());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
