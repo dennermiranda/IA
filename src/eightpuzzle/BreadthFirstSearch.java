@@ -59,7 +59,7 @@ public class BreadthFirstSearch {
             
             if (!var.isSolution()){
                 
-                var.genSucessors();
+                suc = var.genSucessors();
                 addToQueue(suc, q1);
                 
             }else{

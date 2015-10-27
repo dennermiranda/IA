@@ -194,6 +194,22 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         }
         return true;
     }
+
+    public ArrayList<EightPuzzle> genSucessors(int heur) {
+        ArrayList<EightPuzzle> suc = genSucessors();
+        if(heur == 0){
+            for (EightPuzzle suc1 : suc) {
+                suc1.hamming();
+            }
+        }
+        else{
+            for (EightPuzzle suc1 : suc) {
+                suc1.manhattan();
+            }
+        }
+        return suc;
+        
+    }
     
     
     
