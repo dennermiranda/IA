@@ -5,7 +5,9 @@
  */
 package eightpuzzle;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.PriorityQueue;
 
 /**
@@ -16,7 +18,7 @@ import java.util.PriorityQueue;
 public class AStar {
     
     ArrayList<EightPuzzle> visited= new ArrayList<>();
-    
+    private Deque<String> path = new ArrayDeque<String>();
     public void addToQueue (ArrayList<EightPuzzle> suc, PriorityQueue<EightPuzzle> q1){
         
         int i;
@@ -37,6 +39,7 @@ public class AStar {
     	int count = 0;
     	
         ArrayList<EightPuzzle> suc = new ArrayList<>();
+        
         System.out.println("Inicia Star");
         //Queue q1 = new Queue();
         PriorityQueue<EightPuzzle> q1 = new PriorityQueue<>();
@@ -47,25 +50,46 @@ public class AStar {
         q1.offer(eightpuzzle);
         EightPuzzle var = q1.element();
         visited.add(var);
+        var.setMove("Begin");
         System.out.println("Antes While");
         while (!q1.isEmpty()){
-            System.out.println("LACO");
+            //System.out.println("LACO");
             var = q1.poll();
             count++;
+            path.add(var.getMove());
             if (!var.isSolution()){
                 
                 suc = var.genSucessors(heur);
                 addToQueue(suc, q1);
-                
+                path.removeLast();
             }else{
                 System.out.println("GOAL! ");
-                System.out.println(var.toString());
+                System.out.println(path(var));
+                //System.out.println(var.toString());
                 break;
                 
             }
         }
         System.out.println(count);
         System.out.println("Saiu");
+    }
+    
+    public String path(EightPuzzle puzzle){
+        StringBuilder path = new StringBuilder();
+        //path.append("hue");
+        int count = 0;
+        EightPuzzle next = new EightPuzzle();
+        next = puzzle;
+        //System.out.println("hue");
+        while(next!=null){
+            path.append(next.getMove());
+            next = next.getParent();
+            if (next!=null)
+                path.append("; ");
+            count++;
+        }
+        path.append("; "+ count);
+        return path.toString();
     }
     
 }

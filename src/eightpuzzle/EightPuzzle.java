@@ -26,10 +26,19 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     private List<Integer> current  = new ArrayList<Integer>();
     
     private Deque<String> path = new ArrayDeque<String>();
-    private EightPuzzle parent;
+    private EightPuzzle parent = null;
+    private String move;
     //private int hamming;
     private int h = 0;
     private int hash;
+
+    public String getMove() {
+        return move;
+    }
+
+    public void setMove(String move) {
+        this.move = move;
+    }
     
     @Override
     public String toString() {
@@ -154,24 +163,24 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         
         //left
         if(hole != 0 && hole != 3 && hole !=6)
-            swap(hole-1, suc);
+            swap(hole-1, suc, "Right");
         
         //top
         if (hole != 6 && hole != 7 && hole != 8)
-            swap(hole+3, suc);
+            swap(hole+3, suc, "Down");
         
         //bottom
         if (hole != 0 && hole != 1 && hole != 2)
-            swap(hole-3, suc);
+            swap(hole-3, suc, "Up");
         
         //right
         if (hole != 2 && hole != 5 && hole != 8)
-            swap(hole+1, suc);
+            swap(hole+1, suc, "Left");
             
         return suc;
     }
     
-    public void swap(int hole1, ArrayList<EightPuzzle> suc){
+    public void swap(int hole1, ArrayList<EightPuzzle> suc, String step){
         
         EightPuzzle puzzle = new EightPuzzle(this.current);
         List<Integer> newCurrent = new ArrayList<>(this.current);
@@ -183,7 +192,8 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         int valueOfNext = puzzle.getCurrent().get(hole1);
         puzzle.getCurrent().set(holeOld, valueOfNext);
         puzzle.getCurrent().set(posNext, 0);
-        
+        puzzle.setMove(step);
+        puzzle.setParent(this);
         //puzzle.swap(hole1);
         suc.add(puzzle);
         
