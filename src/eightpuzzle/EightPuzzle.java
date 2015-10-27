@@ -22,14 +22,21 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
      * @param args the command line arguments
      */
     private final int solution[] = {1, 2, 3, 4, 5, 6, 7, 8, 0};
-    private List initialState  = new ArrayList();
-    private List current  = new ArrayList();
+    private List<Integer> initialState  = new ArrayList<Integer>();
+    private List<Integer> current  = new ArrayList<Integer>();
     
     private Deque<String> path = new ArrayDeque<String>();
-    private EightPuzzle parent = new EightPuzzle();
+    private EightPuzzle parent;
     //private int hamming;
     private int h = 0;
-
+    private int hash;
+    
+    @Override
+    public String toString() {
+        return "EightPuzzle{" + "current=" + current + ", path=" + path + '}';
+    }
+    
+    
     public int getH() {
         return h;
     }
@@ -96,25 +103,25 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     
     public void swap (int number){
         int holeP = this.hole();
-        int numberB = current.lastIndexOf(number);
-        current.set(holeP, number);
-        current.set(numberB, 0);
+        int indexTo = current.lastIndexOf(number);
+        int x = current.set(holeP, number);
+        int z = current.set(indexTo, 0);
     }
     
-    public EightPuzzle(List initialState) {
+    public EightPuzzle(List<Integer> initialState) {
         this.initialState = initialState;
     }
 
     
-    public List getInitialState() {
+    public List<Integer> getInitialState() {
         return initialState;
     }   
        
-    public List getCurrent() {
+    public List<Integer> getCurrent() {
         return current;
     }
 
-    public void setCurrent(List current) {
+    public void setCurrent(List<Integer> current) {
         this.current = current;
     }
     
@@ -167,8 +174,17 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     public void swap(int hole1, ArrayList<EightPuzzle> suc){
         
         EightPuzzle puzzle = new EightPuzzle(this.current);
-        puzzle.setCurrent(this.current);
-        puzzle.swap(hole1);
+        List<Integer> newCurrent = new ArrayList<>(this.current);
+        puzzle.setCurrent(newCurrent);
+        
+        
+        int posNext = hole1;
+        int holeOld = puzzle.hole();
+        int valueOfNext = puzzle.getCurrent().get(hole1);
+        puzzle.getCurrent().set(holeOld, valueOfNext);
+        puzzle.getCurrent().set(posNext, 0);
+        
+        //puzzle.swap(hole1);
         suc.add(puzzle);
         
     }
@@ -177,22 +193,18 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.current);
+        this.hash = hash;
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        
         final EightPuzzle other = (EightPuzzle) obj;
-        if (!Objects.equals(this.current, other.current)) {
-            return false;
+        if (this.getCurrent().equals(other.getCurrent())) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public ArrayList<EightPuzzle> genSucessors(int heur) {
@@ -210,6 +222,8 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         return suc;
         
     }
+    
+    
     
     
     

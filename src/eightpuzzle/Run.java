@@ -5,17 +5,33 @@
  */
 package eightpuzzle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Dener
  */
 public class Run {
     public static void main (String args []){
-        new GUIPuzzleF().setVisible(true);
+        //new GUIPuzzleF().setVisible(true);
+    	
         EightPuzzle puzzle = new EightPuzzle();
+        EightPuzzle puzzle1 = new EightPuzzle();
         
-        if(!puzzle.isSolution()){
-            
+        
+        int test [] = {1,0,6,3,2,5,7,8,4};
+        List<Integer> test1 = new ArrayList<Integer>();
+        
+        for (int i = 0; i < 9; i++){
+            test1.add(test[i]);
         }
+        puzzle.setCurrent(test1);
+        puzzle1.setCurrent(test1);
+        System.out.println(puzzle.equals(puzzle1));
+        
+        AStar star = new AStar();
+        System.out.println("Entra star");
+        star.search(puzzle, 0);
     }
 }
