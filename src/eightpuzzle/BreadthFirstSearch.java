@@ -72,11 +72,31 @@ public class BreadthFirstSearch {
                 
             }else{
                 System.out.println("GOAL! ");
-                System.out.println(var.toString());
-                break;
+                //System.out.println(var.toString());
+                System.out.println(path(var));
+                break;                
             }
         }
         System.out.println(count);
+        
+    }
+    
+    public String path(EightPuzzle puzzle){
+        StringBuilder path = new StringBuilder();
+        //path.append("hue");
+        int count = 0;
+        EightPuzzle next = new EightPuzzle();
+        next = puzzle;
+        //System.out.println("hue");
+        while(next!=null){
+            path.append(next.getMove());
+            next = next.getParent();
+            if (next!=null)
+                path.append("; ");
+            count++;
+        }
+        path.append("; "+ count);
+        return path.toString();
     }
     
 }

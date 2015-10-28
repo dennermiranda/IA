@@ -31,7 +31,16 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     //private int hamming;
     private int h = 0;
     private int hash;
+    private int dist = 0;
 
+    public int getDist() {
+        return dist;
+    }
+
+    public void setDist(int dist) {
+        this.dist = dist;
+    }
+    
     public String getMove() {
         return move;
     }
@@ -103,7 +112,7 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     public int hamming (){
         int x = 0;
         for (int i = 0; i < 9; i++){
-            if ((int )current.get(i)!= solution[i])
+            if ((int )current.get(i)!= solution[i] && current.get(i) > 0)
                 x++;
         }
         this.h = x;
@@ -153,7 +162,7 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
     @Override
     public int compareTo(EightPuzzle o) {
         
-        return Integer.compare(h, o.getH());
+        return Integer.compare(h+ dist, o.getH() + o.getDist());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -194,6 +203,7 @@ public class EightPuzzle implements Comparable<EightPuzzle>{
         puzzle.getCurrent().set(posNext, 0);
         puzzle.setMove(step);
         puzzle.setParent(this);
+        puzzle.setDist(this.dist+1);
         //puzzle.swap(hole1);
         suc.add(puzzle);
         

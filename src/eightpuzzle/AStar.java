@@ -21,7 +21,7 @@ public class AStar {
     
     //ArrayList<EightPuzzle> visited= new ArrayList<>();
     Set<EightPuzzle> visited = new HashSet<EightPuzzle>();
-    private Deque<String> path = new ArrayDeque<String>();
+    //private Deque<String> path = new ArrayDeque<String>();
     public void addToQueue (ArrayList<EightPuzzle> suc, PriorityQueue<EightPuzzle> q1){
         
         int i;
@@ -59,12 +59,12 @@ public class AStar {
             //System.out.println("LACO");
             var = q1.poll();
             count++;
-            path.add(var.getMove());
+            //path.add(var.getMove());
             if (!var.isSolution()){
                 
                 suc = var.genSucessors(heur);
                 addToQueue(suc, q1);
-                path.removeLast();
+                //path.removeLast();
             }else{
                 System.out.println("GOAL! ");
                 System.out.println(path(var));

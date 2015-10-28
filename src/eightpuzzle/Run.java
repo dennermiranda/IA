@@ -28,12 +28,13 @@ public class Run {
             test1.add(test[i]);
         }
         puzzle.setCurrent(test1);
-        puzzle1.setCurrent(test1);
-        System.out.println(puzzle.equals(puzzle1));
+        //puzzle1.setCurrent(test1);
+        //System.out.println(puzzle.equals(puzzle1));
         
+        // 0 - hamming - 1 manhattan
         /*AStar star = new AStar();
         System.out.println("Entra star");
-        star.search(puzzle, 0);*/
+        star.search(puzzle, 1);*/
         
         BreadthFirstSearch bfs = new BreadthFirstSearch();
         System.out.println("Entra BFS");
