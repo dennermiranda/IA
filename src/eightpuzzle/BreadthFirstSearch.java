@@ -61,7 +61,7 @@ public class BreadthFirstSearch {
         while (!q1.isEmpty()){
             
             var = q1.poll();
-            System.out.println("Laço "+count);
+            //System.out.println("Laço "+count);
             count++;
             
             if (!var.isSolution()){
@@ -76,6 +76,7 @@ public class BreadthFirstSearch {
                 break;
             }
         }
+        System.out.println(count);
     }
     
 }
