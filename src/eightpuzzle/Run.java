@@ -20,7 +20,8 @@ public class Run {
         EightPuzzle puzzle1 = new EightPuzzle();
         
         
-        int test [] = {1,0,6,3,2,5,7,8,4};
+        //int test [] = {1,0,6,3,2,5,7,8,4};
+        int test [] =  {0,6,1,8,4,2,3,5,7};
         List<Integer> test1 = new ArrayList<Integer>();
         
         for (int i = 0; i < 9; i++){
@@ -30,8 +31,12 @@ public class Run {
         puzzle1.setCurrent(test1);
         System.out.println(puzzle.equals(puzzle1));
         
-        AStar star = new AStar();
+        /*AStar star = new AStar();
         System.out.println("Entra star");
-        star.search(puzzle, 0);
+        star.search(puzzle, 0);*/
+        
+        BreadthFirstSearch bfs = new BreadthFirstSearch();
+        System.out.println("Entra BFS");
+        bfs.search(puzzle);
     }
 }

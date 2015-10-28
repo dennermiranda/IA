@@ -27,16 +27,16 @@ public class BreadthFirstSearch {
     
     //EightPuzzle eightpuzzle = new EightPuzzle();
     //ArrayList<EightPuzzle> suc = new ArrayList<>();
-    HashMap<Integer, EightPuzzle> visited= new HashMap<Integer, EightPuzzle>();
+    ArrayList<EightPuzzle> visited= new ArrayList<>();
     
     public void addToQueue (ArrayList suc, Queue q1){
         
         int i;
-        for (i=0;i<=suc.size();i++){
+        for (i=0;i<suc.size();i++){
             
-            if (!visited.containsValue(suc.get(i))){
+            if (!visited.contains(suc.get(i))){
                 
-                visited.put(suc.get(i).hashCode(), (EightPuzzle)suc.get(i));
+                visited.add((EightPuzzle)suc.get(i));
                 q1.add(suc.get(i));
                 
             }
@@ -47,23 +47,30 @@ public class BreadthFirstSearch {
     public void search (EightPuzzle eightpuzzle){
         
         ArrayList<EightPuzzle> suc = new ArrayList<>();
+        int count = 0;
         
-        //Queue q1 = new Queue();
         Queue<EightPuzzle> q1 = new LinkedList<EightPuzzle>();
+        q1.offer(eightpuzzle);
         EightPuzzle var = q1.element();
-        visited.put(var.hashCode(), var);
+        visited.add(var);
+        var.setMove("Begin");
         
         while (!q1.isEmpty()){
             
             var = q1.poll();
+            System.out.println("Laço "+count);
+            count++;
             
             if (!var.isSolution()){
                 
                 suc = var.genSucessors();
                 addToQueue(suc, q1);
+                //path.removeLast();
                 
             }else{
                 System.out.println("GOAL! ");
+                System.out.println(var.toString());
+                break;
             }
         }
     }
