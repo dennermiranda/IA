@@ -9,6 +9,8 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  *
@@ -17,7 +19,8 @@ import java.util.PriorityQueue;
  */
 public class AStar {
     
-    ArrayList<EightPuzzle> visited= new ArrayList<>();
+    //ArrayList<EightPuzzle> visited= new ArrayList<>();
+    Set<EightPuzzle> visited = new HashSet<EightPuzzle>();
     private Deque<String> path = new ArrayDeque<String>();
     public void addToQueue (ArrayList<EightPuzzle> suc, PriorityQueue<EightPuzzle> q1){
         
@@ -65,7 +68,7 @@ public class AStar {
             }else{
                 System.out.println("GOAL! ");
                 System.out.println(path(var));
-                //System.out.println(var.toString());
+                System.out.println(var.toString());
                 break;
                 
             }

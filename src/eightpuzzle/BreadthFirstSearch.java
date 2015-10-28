@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
+import java.util.HashSet;
 //import sun.invoke.empty.Empty;
 //import java.util.ha
 
@@ -27,7 +29,8 @@ public class BreadthFirstSearch {
     
     //EightPuzzle eightpuzzle = new EightPuzzle();
     //ArrayList<EightPuzzle> suc = new ArrayList<>();
-    ArrayList<EightPuzzle> visited= new ArrayList<>();
+    //ArrayList<EightPuzzle> visited= new ArrayList<>();
+    Set<EightPuzzle> visited = new HashSet<EightPuzzle>();
     
     public void addToQueue (ArrayList suc, Queue q1){
         
